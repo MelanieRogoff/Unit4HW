@@ -1,0 +1,11 @@
+#bck {
+    background-image: url("kawaii.jpg");
+    background-size: cover;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+
+/* Background Credit for README: https://wallpaperaccess.com/full/416844.jpg */
+
+/*MAKE SURE THIS IS RESPONSIVE ACROSS ALL DEVICE TYPES*/
