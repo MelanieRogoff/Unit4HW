@@ -1,89 +1,110 @@
-let highscore = [];
-let localStorage; //This is where user's final score + initials must be stored
+//Variable declarations
 
-let score; //This is calculated by time remaining. Answer quickly + correctly results in higher score. Answer incorrectly results in time penalty (15secs subtracted from time remaining).
-
-//Length of questions array determines play length. 15 secs per Q. Length of play = 75 secs.
-
-let timeInterval;
-
+let highscore;
+let score; //Calculated by time remaining. Answer quickly + correctly results in higher score. 
+let timeInterval; //Length of Q's array dets play length. 15 secs per Q. Length of play= 75secs.
 let i = 0;
+let hs = "View Highscores";//@ Beg, navigation option to View Highscores (top left) must be set to 0 
+hs = 0;
+let timeAtTop = "Time"; //@Beg, navigation option to view Time (top right) must be set to 0.
+timeAtTop = 0;
+
 
 //Grab from HTML
 const timeEl = document.getElementById("time");
+const timeEl2 = document.getElementById("time2"); //Header
 const wordsEl = document.getElementById("words");
 const mainEl = document.getElementById("main");
+const hScoreEl = document.getElementById("hscore");
+const btn = document.getElementById("startbtn");
+timeEl.textContent = "Time";
+hScoreEl.textContent = "View High Score";
 
+
+//Questions array
 const questions = [
-  { //FIRST QUESTION
-    title: "1. Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts"
+  { title1: "1. Commonly used data types DO NOT include: ",
+    choices1: ["strings", "booleans", "alerts", "numbers"],
+    answer1: "alerts"
   },
-  { //SECOND QUESTION
-    title: "2. The condition in an if / else statement is enclosed within ____.",
-    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    answer: "parentheses"
+  { title2: "2. The condition in an if / else statement is enclosed within ____.",
+    choices2: ["quotes", "curly brackets", "parentheses", "square brackets"],
+    answer2: "parentheses"
   },
-  { //THIRD QUESTION
-    title: "3. How does one comment out code in JavaScript?",
-    choices: ["/* */", "<!---->", "//", "!//"],
-    answer: "//"
+  { title3: "3. How does one comment out code in JavaScript?",
+    choices3: ["/* /*", "<!---->", "//", "!//"],
+    answer3: "//"
   },
-  { //FOURTH QUESTION
-    title: "4. What is the most specific equality comparison symbol?",
-    choices: ["=", "===", "==", "!=="],
-    answer: "==="
+  { title4: "4. What is the most specific equality comparison symbol?",
+    choices4: ["=", "===", "==", "!!="],
+    answer4: "==="
   },
-  { //FIFTH QUESTION
-    title: "5. What is the difference between a for loop and a while loop?",
-    choices: ["For loops are used when you're looking FOR something. While loops are nonexistent.",
+  { title5: "5. What is the difference between a for loop and a while loop?",
+    choices5: ["For loops are used when you're looking FOR something. While loops are nonexistent.",
       "For loops run through a loop for a specific amount of time. While loops work as long as the condition is true.",
       "For loops only work if a specific condition is true, whereas a while loop only goes through a loop for a specific amount of times.",
       "There is no difference."],
-    answer: "For loops allow one to run through a loop for a specific amount of times, whereas a while loop goes through a loop of code as long as the specific condition is true."
+    answer5: "For loops allow one to run through a loop for a specific amount of times, whereas a while loop goes through a loop of code as long as the specific condition is true."
   },
 ];
 
-
-//Coding the click for the Start Button
+//Coding click for Start Button
 const start = document.getElementById("startbtn");
 start.addEventListener("click", someQs);
 
-//At landing page, navigation option to View Highscores (seen at top left) and Time (top right) must both be set to 0.
 
-//Initializing the questions upon "Let's Play!" being clicked as well as the timer
+//Start function someQs();
 function someQs() {
-  for (var i = 0; i < questions.length; i++) {
+  
     timer();
-
-    //When "Let's Play!" button is clicked, series of questions are displayed and timer starts (initialize timer w/a value and have it immediately begin countdown)
-    //If a question is answered incorrectly, code the process of subtracting 15 mins from the timer
-    //Code Timer STOPS when ALL Q'S ANSWERED or TIMER REACHES 0
-    //User gets 15 seconds before the next question appears
-    //Function that says what to do if answer is incorrect goes here
-    //Function that says what to do when timer ends or all answers incorrect goes here
-    //Put an audio file that has my voice saying "BZZZT"! that is triggered upon clicking the wrong answer 
-    //When time runs out and/or all Q's=answered, present user w/their final score and ask them to enter their initials
-    //Put something here that saves user's initials and score to a high scores view by using variable localStorage
+    
+    //Have to be able to CLICK ON THE ANSWERS 
+    //Timer STOPS when ALL Q'S ANSWERED or TIMER REACHES 0
+    //User gets 15 secs before next Q appears
+    //Call F(x) that says what to do if answer is incorrect 
+    //Call F(x) that says what to do when timer ends OR all answers incorrect
+    //When time runs out and/or all Q's=answered, show final score + ask user to enter initials
+    //Saves user initials + score to a high scores view by using localStorage
   }
+//End of function someQs();
 
-}
+
+
+
+//Code F(x) for if answer=incorrect (subtract 15secs from timer)
+
+
+
+
+//Code F(x) for when timer ends OR all answers incorrect
+
+
+
+
+//Start of timer();
 function timer() {
-  //Declaring the variable w/in function to 75 secs (15 per questions)
+   //Remove "Let's Play" button when clicked
+  startbtn.remove();
   let timeLeft = 75;
-  //Set up timeInterval function which shows many secs remain
   wordsEl.textContent = "";
-  wordsEl.textContent = questions;
+  timeEl2.textContent = "";
+  hScoreEl.textContent = "View High Score";
+  wordsEl.textContent = display;
+
+  //Timer component 
   timeInterval = setInterval(function () {
     timeEl.textContent = "Time: " + timeLeft;
-    //Subtract timeLeft by 1sec
     timeLeft--;
-    if (timeLeft === 0) {
+    //Set it to LESS THAN # you want included. Want 0 counted, so set it to LESS THAN 0.
+    if (timeLeft < 0) {
       clearInterval(timeInterval);
     }
-    //Set the function to count down every 1 second
+    //Count down every 1 second
   }, 1000);
 }
+//End of function timer();
 
-//Set up questions as objects with an array
+
+
+//Displaying Q's -- this=referenced in timer() f(x) & called w/in someQs().
+const display = Object.values(questions[i]);

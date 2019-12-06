@@ -5,7 +5,20 @@
     word-wrap: break-word;
 }
 
+#time {
+    font-size: 15px;
+    position: absolute;
+    top: 10px;
+    right: 19px;
+}
 
+
+#hscore {
+    font-size: 15px;
+    position: absolute;
+    top: 10px;
+    left: 19px;
+}
 /* Background Credit for README: https://wallpaperaccess.com/full/416844.jpg */
 
 /*MAKE SURE THIS IS RESPONSIVE ACROSS ALL DEVICE TYPES*/
