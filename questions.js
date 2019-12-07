@@ -1,28 +1,26 @@
 //Variable declarations
-
 let highscore;
-let score; //Calculated by time remaining. Answer quickly + correctly results in higher score. 
-let timeInterval; //Length of Q's array dets play length. 15 secs per Q. Length of play= 75secs.
+let score; //Calculated by time remaining. Answer quickly + correctly = higher score. 
+let timeInterval; //Length of Q's array dets play length. 15secs/Q. Length of play=75secs.
 let i = 0;
-let hs = "View Highscores";//@ Beg, navigation option to View Highscores (top left) must be set to 0 
-hs = 0;
-let timeAtTop = "Time"; //@Beg, navigation option to view Time (top right) must be set to 0.
-timeAtTop = 0;
+let localStorage;
+let hs = "View Highscores";
+hs = 0; //@ Beg, option to View Highscores (top left) must be set to 0 
+let timeAtTop = "Time";
+timeAtTop = 0; //@Beg, option to view Time (top right) must be set to 0.
 
-
-//Grab from HTML
 const timeEl = document.getElementById("time");
 const timeEl2 = document.getElementById("time2"); //Header
 const wordsEl = document.getElementById("words");
 const mainEl = document.getElementById("main");
 const hScoreEl = document.getElementById("hscore");
 const btn = document.getElementById("startbtn");
-const next = document.getElementById("nextQuestion");
 const ansBtn = document.getElementById("ans");
 timeEl.textContent = "Time";
 hScoreEl.textContent = "View High Score";
+//Next Question btn
+const next = document.getElementById("nextQ");
 
-//Questions array
 const questions = [
   { title1: "1. Commonly used data types DO NOT include: ",
     choices1: ["strings", "booleans", "alerts", "numbers"],
@@ -41,105 +39,140 @@ const questions = [
     answer4: "==="
   },
   { title5: "5. What is the difference between a for loop and a while loop?",
-    choices5: ["For loops are used when you're looking FOR something. While loops are nonexistent.",
-      "For loops run through a loop for a specific amount of time. While loops work as long as the condition is true.",
-      "For loops only work if a specific condition is true, whereas a while loop only goes through a loop for a specific amount of times.",
-      "There is no difference."],
-    answer5: "For loops allow one to run through a loop for a specific amount of times, whereas a while loop goes through a loop of code as long as the specific condition is true."
+    choices5: ["Skip question.", "I give up.", "For loops work as long as their condition is true - while loops only work if you break the for loop",
+      "For loops run through a loop for a specific amount of times, whereas a while loop goes through a loop of code as long as the specific condition is true."],
+    answer5: "For loops run through a loop for a specific amount of times, whereas a while loop goes through a loop of code as long as the specific condition is true."
   },
 ];
 
-//Coding click for Start Button
+//Click Start Button Code
 const start = document.getElementById("startbtn");
 start.addEventListener("click", someQs);
 
-//Functions for hiding the button, the answers, showing the answers, and showing the buttons, respectively:
+
+//Hiding button, answers, showing answers, and showing buttons, respectively:
 function hideBtn() {
-  document.getElementById("nextQuestion").style.display="none";
+  document.getElementById("nextQ").style.display="none";
 }
 
+function hidefinale() {
+  document.getElementById("finale").style.display="none";
+}
 function hideAns() {
   document.getElementById("ans").style.display="none";
   document.getElementById("two").style.display="none";
   document.getElementById("three").style.display="none";
   document.getElementById("four").style.display="none";
 }
-
 function showAns() {
   document.getElementById("ans").style.display="block";
   document.getElementById("two").style.display="block";
   document.getElementById("three").style.display="block";
   document.getElementById("four").style.display="block";
 }
-
 function showBtn() {
-  document.getElementById("nextQuestion").style.display="block";
+  document.getElementById("nextQ").style.display="block";
 }
 
+function showfinale() {
+  document.getElementById("finale").style.display="block";
+  finale.textContent="Click to write your initials!";
+  finale.addEventListener("click", initials);
+}
 hideBtn();
 hideAns();
+hidefinale();
 
-
-
-//Start function someQs();
+//Start someQs();
 function someQs() {
   showBtn();
   showAns();
   timer();
   firstQ();
-    //Have to be able to CLICK ON THE ANSWERS 
     //Timer STOPS when ALL Q'S ANSWERED or TIMER REACHES 0
     //User gets 15 secs before next Q appears
-    //Call F(x) that says what to do if answer is incorrect 
-    //Call F(x) that says what to do when timer ends OR all answers incorrect
     //When time runs out and/or all Q's=answered, show final score + ask user to enter initials
     //Saves user initials + score to a high scores view by using localStorage
   }
-//End of function someQs();
-
-
+//End of someQs();
 
 
 //Code F(x) for if answer=incorrect (subtract 15secs from timer)
-
-
-
-
 //Code F(x) for when timer ends OR all answers incorrect
 
-
-
-
-//Start of timer();
+//Start timer();
 function timer() {
   let timeLeft = 75;
   timeInterval = setInterval(function () {
     timeEl.textContent = "Time: " + timeLeft;
     timeLeft--;
-    //Set it to LESS THAN # you want included. Want 0 counted, so set it to LESS THAN 0.
-    if (timeLeft < 0) {
+    if (timeLeft < 0) { //Set to LESS THAN # you want included.
       clearInterval(timeInterval);
     }
-    //Count down every 1 second
-  }, 1000);
-
+  }, 1000); //Count down every 1 second
 } 
-//End of timer f(x)
 
-
+//Start f(x) for 1st Q
 function firstQ () {
   btn.remove();
   wordsEl.textContent = "";
   timeEl2.textContent = "";
   hScoreEl.textContent = "View High Score";
-  const display = questions[i].title1;
+  let display = questions[i].title1;
   wordsEl.textContent = display;
-  //Choices coded for first Q
   ansBtn.textContent= questions[i].choices1[0]; 
   two.textContent= questions[i].choices1[1]; 
   three.textContent= questions[i].choices1[2]; 
   four.textContent= questions[i].choices1[3]; 
-  if (ansBtn === "alert") {
-    alert("YAY");
+  next.addEventListener("click", secQ);
+
+  //if correct answer clicked, +1. Else, decrease by 15 secs once user hits Next Question.
 }
+
+function secQ() {
+  wordsEl.textContent=questions[1].title2;
+  ansBtn.textContent= questions[1].choices2[0]; 
+  two.textContent= questions[1].choices2[1]; 
+  three.textContent= questions[1].choices2[2]; 
+  four.textContent= questions[1].choices2[3]
+  next.addEventListener("click", thirdQ);
+}
+
+function thirdQ() {
+  wordsEl.textContent=questions[2].title3;
+  ansBtn.textContent= questions[2].choices3[0]; 
+  two.textContent= questions[2].choices3[1]; 
+  three.textContent= questions[2].choices3[2]; 
+  four.textContent= questions[2].choices3[3]
+  next.addEventListener("click", fourQ);
+}
+
+function fourQ() {
+  wordsEl.textContent=questions[3].title4;
+  ansBtn.textContent= questions[3].choices4[0]; 
+  two.textContent= questions[3].choices4[1]; 
+  three.textContent= questions[3].choices4[2]; 
+  four.textContent= questions[3].choices4[3]
+  next.addEventListener("click", fiveQ);
+}
+
+function fiveQ() {
+  wordsEl.textContent=questions[4].title5;
+  ansBtn.textContent= questions[4].choices5[0]; 
+  two.textContent= questions[4].choices5[1]; 
+  three.textContent= questions[4].choices5[2]; 
+  four.textContent= questions[4].choices5[3]
+  next.addEventListener("click", final);
+}
+
+function final() {
+  wordsEl.textContent="You're done! Here is your score: " + score ;
+  showfinale();
+  hideBtn();
+  hideAns();
+}
+
+function initials() {
+  const hi = prompt("Write your initials below!");
+   let localStorage = hi;
 }

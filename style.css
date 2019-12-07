@@ -12,16 +12,24 @@
     right: 19px;
 }
 
-#nextQuestion {
+#nextQ {
     position: absolute;
     right: 120px;
     bottom: 200px;
+}
+
+#finale {
+    position: absolute;
+    right: 350px;
+    bottom: 300px;
 }
 
 #ans, #two, #three, #four {
     position: relative;
     left: 350px;
     top: -85px;
+    font-size: 15px;
+    word-wrap: break-word;
 }
 
 #hscore {
