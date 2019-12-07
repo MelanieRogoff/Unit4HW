@@ -17,9 +17,10 @@ const wordsEl = document.getElementById("words");
 const mainEl = document.getElementById("main");
 const hScoreEl = document.getElementById("hscore");
 const btn = document.getElementById("startbtn");
+const next = document.getElementById("nextQuestion");
+const ansBtn = document.getElementById("ans");
 timeEl.textContent = "Time";
 hScoreEl.textContent = "View High Score";
-
 
 //Questions array
 const questions = [
@@ -52,12 +53,40 @@ const questions = [
 const start = document.getElementById("startbtn");
 start.addEventListener("click", someQs);
 
+//Functions for hiding the button, the answers, showing the answers, and showing the buttons, respectively:
+function hideBtn() {
+  document.getElementById("nextQuestion").style.display="none";
+}
+
+function hideAns() {
+  document.getElementById("ans").style.display="none";
+  document.getElementById("two").style.display="none";
+  document.getElementById("three").style.display="none";
+  document.getElementById("four").style.display="none";
+}
+
+function showAns() {
+  document.getElementById("ans").style.display="block";
+  document.getElementById("two").style.display="block";
+  document.getElementById("three").style.display="block";
+  document.getElementById("four").style.display="block";
+}
+
+function showBtn() {
+  document.getElementById("nextQuestion").style.display="block";
+}
+
+hideBtn();
+hideAns();
+
+
 
 //Start function someQs();
 function someQs() {
-  
-    timer();
-    
+  showBtn();
+  showAns();
+  timer();
+  firstQ();
     //Have to be able to CLICK ON THE ANSWERS 
     //Timer STOPS when ALL Q'S ANSWERED or TIMER REACHES 0
     //User gets 15 secs before next Q appears
@@ -83,15 +112,7 @@ function someQs() {
 
 //Start of timer();
 function timer() {
-   //Remove "Let's Play" button when clicked
-  startbtn.remove();
   let timeLeft = 75;
-  wordsEl.textContent = "";
-  timeEl2.textContent = "";
-  hScoreEl.textContent = "View High Score";
-  wordsEl.textContent = display;
-
-  //Timer component 
   timeInterval = setInterval(function () {
     timeEl.textContent = "Time: " + timeLeft;
     timeLeft--;
@@ -101,10 +122,24 @@ function timer() {
     }
     //Count down every 1 second
   }, 1000);
+
+} 
+//End of timer f(x)
+
+
+function firstQ () {
+  btn.remove();
+  wordsEl.textContent = "";
+  timeEl2.textContent = "";
+  hScoreEl.textContent = "View High Score";
+  const display = questions[i].title1;
+  wordsEl.textContent = display;
+  //Choices coded for first Q
+  ansBtn.textContent= questions[i].choices1[0]; 
+  two.textContent= questions[i].choices1[1]; 
+  three.textContent= questions[i].choices1[2]; 
+  four.textContent= questions[i].choices1[3]; 
+  if (ansBtn === "alert") {
+    alert("YAY");
 }
-//End of function timer();
-
-
-
-//Displaying Q's -- this=referenced in timer() f(x) & called w/in someQs().
-const display = Object.values(questions[i]);
+}

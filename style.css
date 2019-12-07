@@ -12,6 +12,17 @@
     right: 19px;
 }
 
+#nextQuestion {
+    position: absolute;
+    right: 120px;
+    bottom: 200px;
+}
+
+#ans, #two, #three, #four {
+    position: relative;
+    left: 350px;
+    top: -85px;
+}
 
 #hscore {
     font-size: 15px;
