@@ -3,7 +3,7 @@ let highscore;
 let score = 0; //Calc by time remaining. Answer quickly + correctly = higher score. 
 let timeInterval; //Length of Q's array dets play length. 15secs/Q. Length of play=75secs.
 let i = 0; //Question counter
-let userAns = "";
+let userAns = ''; //For some reason, it only works with singular quotes
 let timeLeft = 75;
 let hs = 0; // "View Highscores";
 let timeAtTop = 0; //"Time";
@@ -83,9 +83,8 @@ document.getElementById("initials").style.display = "block";
 }
 function showSub() {
 document.getElementById("submit").style.display = "block";
-newPage.setAttribute("href", "newpage.html");
+window.location = newpage.html;
 }
-
 
 //Clickers for Submit
 submitBtnEl.addEventListener("click", showSub);
@@ -175,8 +174,7 @@ function checks () {
 }
 
 
-
-//Start someQs(), which is the function running the entire quiz;
+//Start someQs(), which runs the entire quiz;
 function someQs() {
   showAns();
   timer();
