@@ -12,16 +12,24 @@
     <div id="colors" class="jumbotron" style="background-color:transparent !important;">
         <div class="container">
             <h1 class="display-4" id="time2">Basic JavaScript Coding Quiz</h1>
+            
             <!-- Style for time countdown below-->
             <h2 class="display-4" id="time"></h2>
+           
             <!-- Style for View Highscores below-->
             <h3 class="display-4" id="hscore"></h3>
             <p class="lead" id="words">Answer the following questions within the time limit. Incorrect answers will penalize your score and time by 15 seconds! Best of luck.</p>
+            <span id="hello"></span>
+            <span id="messageTxt"></span>
+            <input type="text" name ="" id="initials" placeholder="Enter Initials">
+            <button type="button" id="submit" class="btn btn-info btn-lg">Submit</button>
+            <button type="button" id="goback" class="btn btn-info btn-lg">Go Back</button>
+
         </div>
     </div>
     <!--"Let's Play!" button-->
     <button type="button" id="startbtn" class="btn btn-info btn-lg">Let's Play!</button>
-    <button type="button" id="nextQ" class="btn btn-info btn-lg">Next Question</button>
+
 
     <!--Buttons for each answer-->
     <ul>
@@ -33,8 +41,6 @@
     <br>
     <button type="button" id="four" class="btn btn-danger btn-md"></button>
     </ul>
-
-    <button type="button" id="finale" class="btn btn-success btn-md"></button>
 
     <div id="main"></div>
 
