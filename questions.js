@@ -21,11 +21,11 @@ const questions = [{
   answer: "==="
 },
 {
-  titles: "5. What is the difference between a for loop and a while loop?",
-  choices: ["Skip question.", "I give up.", "For loops work as long as their condition is true - while loops only work if you break the for loop",
-    "For loops run through a loop for a specific amount of times, whereas a while loop goes through a loop of code as long as the specific condition is true."
+  titles: "5. What is the difference between for loop and while loops?",
+  choices: ["Skip question.", "I give up.", "For loops work if their condition is true. While loops work conversely.",
+    "For loops run for a specific amount of time. While loops work as long as the specific condition is true."
   ],
-  answer: "For loops run through a loop for a specific amount of times, whereas a while loop goes through a loop of code as long as the specific condition is true."
+  answer: "For loops run for a specific amount of times. While loops work as long as their condition is true."
 },
 ];
 
@@ -47,6 +47,9 @@ const hScoreEl = document.getElementById("hscore"); //High Score
 hScoreEl.textContent = "View High Score"; 
 const btn = document.getElementById("startbtn"); // Start Btn
 const ansBtn = document.getElementById("ans"); //First answer btn
+const twoBtn = document.getElementById("two"); //Second answer btn
+const threeBtn = document.getElementById("three"); //Third answer btn
+const fourBtn = document.getElementById("four"); //Fourth answer btn
 const initialwords = document.getElementById("initials"); //Initials
 const messageTxtEl = document.getElementById("messageTxt"); 
 const submitBtnEl = document.getElementById("submit") // Submit button for final page
@@ -99,19 +102,19 @@ ansBtn.addEventListener("click", function() {
   checks();
 })
 
-two.addEventListener("click", function() {
+twoBtn.addEventListener("click", function() {
   i++;
   displayQ();
   checks();
 })
 
-three.addEventListener("click", function() {
+threeBtn.addEventListener("click", function() {
   i++;
   displayQ();
   checks();
 })
 
-four.addEventListener("click", function() {
+fourBtn.addEventListener("click", function() {
   i++;
   displayQ();
   checks();
@@ -151,9 +154,9 @@ function displayQ() {
   let currentQs = questions[i];
   wordsEl.textContent = currentQs.titles; 
   ansBtn.textContent = currentQs.choices[0]; //A 
-  two.textContent = currentQs.choices[1]; //B 
-  three.textContent = currentQs.choices[2]; //C 
-  four.textContent = currentQs.choices[3]; //D  
+  twoBtn.textContent = currentQs.choices[1]; //B 
+  threeBtn.textContent = currentQs.choices[2]; //C 
+  fourBtn.textContent = currentQs.choices[3]; //D  
 }
 
 //Check answers

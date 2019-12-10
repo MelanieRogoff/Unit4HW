@@ -38,6 +38,111 @@
     top: 10px;
     left: 19px;
 }
-/* Background Credit for README: https://wallpaperaccess.com/full/416844.jpg */
 
-/*MAKE SURE THIS IS RESPONSIVE ACROSS ALL DEVICE TYPES*/
+@media screen and (min-width: 320px) {
+    .display-4 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #startbtn {
+        margin-top: -60px;
+    }
+    #ans, #two, #three, #four {
+        position: relative;
+        left: 80px;
+        max-width: 150px;
+    }
+    #ans {
+        margin-top: 80px;
+    }
+    #initials {
+        position: relative;
+        left: 60px;
+    }
+    #submit {
+        position: relative;
+        left: 82px;
+    }
+    #time {
+        position: absolute;
+        right: 30px;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .display-4 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #startbtn {
+        margin-top: -60px;
+    }
+    #ans, #two, #three, #four {
+        position: relative;
+        left: 120px;
+        max-width: 150px;
+    }
+    #ans {
+        margin-top: 80px;
+    }
+    #initials {
+        position: relative;
+        left: 70px;
+    }
+    #submit {
+        position: relative;
+        left: 100px;
+    }
+    #time {
+        position: absolute;
+        right: 30px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #ans, #two, #three, #four {
+        max-width: 150px;
+        left: 285px;
+    }
+    .display-4 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    #ans {
+        margin-top: 100px;
+    }
+    #initials {
+        position: relative;
+        left: 240px;
+    }
+    #submit {
+        position: relative;
+        left: 275px;
+    }
+}
+
+@media screen and (min-height: 1110px) {
+    #ans, #two, #three, #four {
+        max-width: 150px;
+        left: 385px;
+    }
+    .display-4 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    #ans {
+        margin-top: 100px;
+    }
+    #initials{
+        position: relative;
+        left: 340px;
+    }
+    #submit {
+        position: relative;
+        left: 380px;
+    }
+}
