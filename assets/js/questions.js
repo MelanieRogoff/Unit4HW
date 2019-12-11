@@ -25,7 +25,7 @@ const questions = [{
   choices: ["Skip question.", "I give up.", "For loops work if their condition is true. While loops work conversely.",
     "For loops run for a specific amount of time. While loops work as long as the specific condition is true."
   ],
-  answer: "For loops run for a specific amount of times. While loops work as long as their condition is true."
+  answer: "For loops run for a specific amount of time. While loops work as long as the specific condition is true."
 },
 ];
 
@@ -33,6 +33,7 @@ const questions = [{
 let highscore;
 let score = 0; //Calc by time remaining. Answer quickly + correctly = higher score. 
 let timeInterval = questions.length * 15; //Length of Q's array dets play length. 15secs/Q. Length of play=75secs.
+console.log(timeInterval);
 let i = 0; //Question counter
 let timeLeft = 75;
 let userAns = '';
@@ -92,27 +93,28 @@ start.addEventListener('click', someQs);
 
 //Checks for Buttons
 ansBtn.addEventListener('click', function() {
+  checks(ansBtn.textContent); //Put check first, because we need to check what to compare, THEN i++ to change, THEN display to show next question.
   i++;
   displayQ();
-  checks();
 })
 
 twoBtn.addEventListener('click', function() {
+  console.log(twoBtn.textContent);
+  checks(twoBtn.textContent);
   i++;
   displayQ();
-  checks();
 })
 
 threeBtn.addEventListener('click', function() {
+  checks(threeBtn.textContent); //This SPECIFICALLY uses the checks function to check THIS button
   i++;
   displayQ();
-  checks();
 })
 
 fourBtn.addEventListener('click', function() {
+  checks(fourBtn.textContent);
   i++;
   displayQ();
-  checks();
 })
 
 //Functions to hide buttons
@@ -133,7 +135,13 @@ function timer() {
       ohHello.textContent = "";
       return final();
     }
+    //Time variable at the start of each question[i]
+    //Time variable right before question[i] changes
+
     if ((i+1 === questions.length + 1)) {
+      if (timeLeft > 30) {
+        score += 20
+      }
       return final(); //This if statement determines if all questions have been answered
     }
   }, 1000); 
@@ -159,8 +167,10 @@ function displayQ() {
 }
 
 //Check answers
-function checks () {
-  if (userAns === questions[i].answer) {
+function checks (banana) { //banana is arbitrarily placed - we put that parameter there because it helps us have dry code. It's a placeholder that allows us to avoid repeating code.
+  console.log(userAns);
+  console.log(questions[i].answer);
+  if (banana === questions[i].answer) {
     ohHello.textContent = "Correct!";
     score++;
     console.log(score);
@@ -169,6 +179,7 @@ function checks () {
     console.log(timeLeft);
     ohHello.textContent = "Incorrect!";
   } 
+  
 }
 
 //Start someQs(), which runs the entire quiz;
