@@ -58,6 +58,7 @@ const start = document.getElementById("startbtn");
 const goBackEl = document.getElementById("goback");
 const ohHello = document.getElementById("hello");
 
+
 //Hiding and Showing Buttons
 function hideSub() { //Hide "Submit" button
 $("#submit").css('display', 'none');
@@ -179,7 +180,6 @@ function checks (banana) { //banana is arbitrarily placed - we put that paramete
     console.log(timeLeft);
     ohHello.textContent = "Incorrect!";
   } 
-  
 }
 
 //Start someQs(), which runs the entire quiz;
@@ -192,8 +192,25 @@ function someQs() {
 //Last page 
 function final() {
   wordsEl.textContent="You're done! Here is your score: " + score;
+  localStorage.setItem('highscore',score); //Putting highscore, it's arbitrary.
+  localStorage.setItem('initally',initialwords.value); //Putting initially, it's arbitrary.
   hideAns();
   showWords();
   $("#submit").css('display', 'block');
   timeEl.textContent = "Time";
+  subClick();
 }
+function subClick () {
+  $("#submit").click(function() { //Function to check if Submit button = clicked
+    $(this).data('clicked', true); //If "this", aka button, being clicked, is true
+    return window.location.assign("newpage.html"); //Take user to new page
+  })
+}
+
+// function goo () {  //For the newpage.html page to link to beginning -- CAN'T FIGURE THIS OUT 
+// }
+
+$("#goback").click(function() {
+  $(this).data('clicked', true);
+  return window.location.assign("index.html");
+  })
