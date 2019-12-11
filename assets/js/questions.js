@@ -141,7 +141,7 @@ function timer() {
 
     if ((i+1 === questions.length + 1)) {
       if (timeLeft > 30) {
-        score += 20
+        score += 20;
       }
       return final(); //This if statement determines if all questions have been answered
     }
@@ -192,8 +192,8 @@ function someQs() {
 //Last page 
 function final() {
   wordsEl.textContent="You're done! Here is your score: " + score;
-  localStorage.setItem('highscore',score); //Putting highscore, it's arbitrary.
-  localStorage.setItem('initally',initialwords.value); //Putting initially, it's arbitrary.
+  localStorage.setItem('highscore', score); //Putting highscore, it's arbitrary.
+  localStorage.setItem('initally', initialwords.value); //Putting initially, it's arbitrary.
   hideAns();
   showWords();
   $("#submit").css('display', 'block');
@@ -207,10 +207,3 @@ function subClick () {
   })
 }
 
-// function goo () {  //For the newpage.html page to link to beginning -- CAN'T FIGURE THIS OUT 
-// }
-
-$("#goback").click(function() {
-  $(this).data('clicked', true);
-  return window.location.assign("index.html");
-  })
