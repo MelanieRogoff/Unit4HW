@@ -12,30 +12,30 @@
     <div id="colors" class="jumbotron" style="background-color:transparent !important;">
         <div class="container">
             <h1 class="display-4" id="time2">High Scores</h1>
-            
+
             <audio id="pop">
                 <source src="thxnext.mp3" type="audio/mpeg">
             </audio>
 
 
             <!--Where initials should go, along with high score-->
-            <p onload="localStorage.getItem(score, initialwords)"> YUHH</p>
+            <p id='help'> YUHH</p>
 
             
             <button type="button" id="goback" class="btn btn-info btn-lg" onclick="window.location.href='index.html'">Go Back</button>
-            <button type="button" id="clearhs" class="btn btn-info btn-lg" onclick="localStorage.clear()">Clear High Scores</button>
+            <button type="button" id="clearhs" class="btn btn-info btn-lg" onclick="clearstring()">Clear High Scores</button>
 
         </div>
     </div>
 
-    <audio controls autoplay name="media"> <source src="assets/music/thxnext.mp3" type="audio/mp3"></audio>
-
+   <!-- <audio controls autoplay name="media"> <source src="assets/music/thxnext.mp3" type="audio/mp3"></audio>
+-->
     <div id="main"></div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
-    <script src="assets/js/questions.js">
+    <script src="assets/js/newpage.js">
     </script>
     
 </body>
