@@ -57,6 +57,10 @@ const submitBtnEl = document.getElementById("submit") // Submit button for final
 const start = document.getElementById("startbtn");
 const goBackEl = document.getElementById("goback");
 const ohHello = document.getElementById("hello");
+const stuff = localStorage.getItem('highscore', score); //Prof said I need to declare this as a variable to get localStorage values to display
+console.log(stuff);
+const stuff2 = localStorage.getItem('initials', initialwords.value); //Prof said I need to declare this as a variable to get localStorage values to display
+console.log(stuff2);
 
 
 //Hiding and Showing Buttons
@@ -139,9 +143,11 @@ function timer() {
     //Time variable at the start of each question[i]
     //Time variable right before question[i] changes
 
+    //If Statement for if all 5 questions have been answered
     if ((i+1 === questions.length + 1)) {
       if (timeLeft > 30) {
         score += 20;
+        clearInterval(timeInterval); //Need this so the adding 20 to the score ONLY HAPPENS ONCE
       }
       return final(); //This if statement determines if all questions have been answered
     }
@@ -192,8 +198,8 @@ function someQs() {
 //Last page 
 function final() {
   wordsEl.textContent="You're done! Here is your score: " + score;
-  localStorage.setItem('highscore', score); //Putting highscore, it's arbitrary.
-  localStorage.setItem('initally', initialwords.value); //Putting initially, it's arbitrary.
+  localStorage.setItem('highscore', score); //Prof said I need to declare this as a variable to get localStorage values to display
+  localStorage.setItem('initials', initialwords.value); //Prof said I need to declare this as a variable to get localStorage values to display
   hideAns();
   showWords();
   $("#submit").css('display', 'block');
@@ -203,6 +209,8 @@ function final() {
 function subClick () {
   $("#submit").click(function() { //Function to check if Submit button = clicked
     $(this).data('clicked', true); //If "this", aka button, being clicked, is true
+    //localStorage.getItem('highscore', score); //Putting highscore, it's arbitrary.
+ // localStorage.getItem('initally', initialwords.value); //Putting initially, it's arbitrary.
     return window.location.assign("newpage.html"); //Take user to new page
   })
 }
