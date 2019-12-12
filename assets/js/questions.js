@@ -55,9 +55,8 @@ const submitBtnEl = document.getElementById("submit") // Submit button for final
 const start = document.getElementById("startbtn");
 const goBackEl = document.getElementById("goback");
 const ohHello = document.getElementById("hello");
-const stuff = localStorage.getItem('highscore'); //Prof said I need to declare this as a variable to get localStorage values to display -- CALL THE KEY ONLY
+const stuff = JSON.parse(localStorage.getItem('highscore')); //Prof said I need to declare this as a variable to get localStorage values to display -- CALL THE KEY ONLY
 const stuff2 = localStorage.getItem('initials'); //Prof said I need to declare this as a variable to get localStorage values to display -- CALL THE KEY ONLY
-
 //Function for viewing High Scores at beginning
 function myFunction() {
   location.replace("newpage.html");
@@ -103,7 +102,6 @@ ansBtn.addEventListener('click', function() {
 })
 
 twoBtn.addEventListener('click', function() {
-  console.log(twoBtn.textContent);
   checks(twoBtn.textContent);
   i++;
   displayQ();
@@ -130,7 +128,6 @@ hideGoBack();
 //Timer
 function timer() {  
   timeInterval = setInterval(function () {
-    console.log(i+" counter");
     timeEl.textContent = "Time: " + timeLeft;
     timeLeft--;
     if (timeLeft < 0) { //Set to LESS THAN # you want included.
@@ -140,8 +137,6 @@ function timer() {
       ohHello.textContent = "";
       return final();
     }
-    //Time variable at the start of each question[i]
-    //Time variable right before question[i] changes
 
     //If Statement for if all 5 questions have been answered
     if ((i === questions.length)) {
@@ -175,15 +170,11 @@ function displayQ() {
 
 //Check answers
 function checks (banana) { //banana is arbitrarily placed - we put that parameter there because it helps us have dry code. It's a placeholder that allows us to avoid repeating code.
-  console.log(userAns);
-  console.log(questions[i].answer);
   if (banana === questions[i].answer) {
     ohHello.textContent = "Correct!";
     score++;
-    console.log(score);
   } else { 
     timeLeft -= 15; 
-    console.log(timeLeft);
     ohHello.textContent = "Incorrect!";
   } 
 }
@@ -202,16 +193,22 @@ function final() {
   showWords();
   $("#submit").css('display', 'block');
   timeEl.textContent = "Time";
-  subClick();
 }
-function subClick () {
-  $("#submit").click(function() { //Function to check if Submit button = clicked
-    $(this).data('clicked', true); //If "this", aka button, being clicked, is true
+//Don't want to put click event below inside of a function, because it's a callback function
+  //Events, including .clicks, take a function, BUT don't need to be inside of a function, as you can see below.
+$("#submit").click(function() { //Function to check if Submit button = clicked
     //WANT TO SAVE INFO ONCE THEY CLICK SUBMIT, SO PUT THESE LOCALSTORAGE SAVES HERE
-    if (initialwords.value.length > 0) { //Checking to see if initials are greater than 0
-      window.location.assign("newpage.html"); //If initials are greater than 0 -so they input initials- take them to the View High Scores Page
-      localStorage.setItem('highscore', score); //Then save their high score
-      localStorage.setItem('initials', initialwords.value); //Then save their initials -- we trigger the display of score + initials in another f(x)
+    if (initialwords.value.length > 0) { //Checking to see if initials are greater than 0, like if there's any initials
+      let arraything = []; //Make empty array to push score/initials into
+      const another = [score, initialwords.value] // Making an array with our data -- don't need stuff2 because we have initialwords.value in this array. We have to save this into an array to call it more easily
+      if (stuff) { //This checks if we have stuff saved in localStorage -- have to do AFTER the click so it's not empty
+          stuff.push(another);  //Push our data array into the empty array, pushes new scores and initials into the array
+          arraything = stuff; //Set arraything equal to stuff because it'll be drier code -- we can replace stuff with arraything
+      } else {
+        arraything.push(another); //Pushing our data array into the empty array -- this runs if stuff is null/false
+      }
+      //Putting localStorage score + windowlocation here. Saving high score into arraything. Don't need to use initials key
+      localStorage.setItem('highscore', JSON.stringify(arraything)); //Then save their high score to arraything, which is now stuff, has to be a string because we can't save arrays/objects into localStorage
+      window.location.assign("newpage.html"); //If initials are greater than 0 - so they input initials- take them to the View High Scores Page
     }
   })
-}
