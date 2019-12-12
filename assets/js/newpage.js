@@ -8,6 +8,8 @@ for (let i = 0; i < stuff.length; i++) { //Using stuff array now
     $("#help").append(p);
 }
 
+
+
 function clearstring () {
   $("#help").text("");
    localStorage.clear();
