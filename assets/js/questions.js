@@ -204,6 +204,7 @@ $("#submit").click(function() { //Function to check if Submit button = clicked
       //This didn't work -- another.sort(function(a, b){return b - a});
       if (stuff) { //This checks if we have stuff saved in localStorage -- have to do AFTER the click so it's not empty
           stuff.push(another);  //Push our data array into the empty array, pushes new scores and initials into the array
+          stuff.sort(function(b, a) {b.score - a.score});
           arraything = stuff; //Set arraything equal to stuff because it'll be drier code -- we can replace stuff with arraything
       } else {
         arraything.push(another); //Pushing our data array into the empty array -- this runs if stuff is null/false

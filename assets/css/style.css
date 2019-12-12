@@ -39,7 +39,7 @@
     left: 19px;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 113px) {
     .display-4 {
       display: flex;
       flex-direction: column;
@@ -59,10 +59,13 @@
     #initials {
         position: relative;
         left: 60px;
+        text-align: center;
+        margin-top: 10px;
     }
     #submit {
         position: relative;
-        left: 82px;
+        margin-top: 15px;
+        left: 100px;
     }
     #time {
         position: absolute;
@@ -70,7 +73,7 @@
     }
 }
 
-@media screen and (min-width: 360px) {
+ @media screen and (max-height: 732px) {
     .display-4 {
       display: flex;
       flex-direction: column;
@@ -89,17 +92,20 @@
     }
     #initials {
         position: relative;
-        left: 70px;
+        left: 62px;
+        margin-top: 10px;
+        text-align: center;
     }
     #submit {
         position: relative;
-        left: 100px;
+        left: 98px;
+        margin-top: 15px;
     }
     #time {
         position: absolute;
         right: 30px;
     }
-}
+} 
 
 @media screen and (min-width: 768px) {
     #ans, #two, #three, #four {
@@ -116,11 +122,14 @@
     }
     #initials {
         position: relative;
-        left: 240px;
+        left: 270px;
+        text-align: center;
+        margin-top: 10px;
     }
     #submit {
         position: relative;
-        left: 275px;
+        margin-top: 15px;
+        left: 310px;
     }
 }
 
@@ -139,10 +148,13 @@
     }
     #initials{
         position: relative;
-        left: 340px;
+        left: 380px;
+        text-align: center;
+        margin-top: 5px;
     }
     #submit {
         position: relative;
-        left: 380px;
+        margin-top: 15px;
+        left: 420px;
     }
 }
