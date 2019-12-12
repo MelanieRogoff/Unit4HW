@@ -31,6 +31,7 @@ const questions = [{
 
 //Variable declarations
 let highscore;
+let arrayscores = [];
 let score = 0; //Calc by time remaining. Answer quickly + correctly = higher score. 
 let timeInterval = questions.length * 15; //Length of Q's array dets play length. 15secs/Q. Length of play=75secs.
 let i = 0; //Question counter
@@ -57,11 +58,14 @@ const ohHello = document.getElementById("hello");
 const stuff = localStorage.getItem('highscore'); //Prof said I need to declare this as a variable to get localStorage values to display -- CALL THE KEY ONLY
 const stuff2 = localStorage.getItem('initials'); //Prof said I need to declare this as a variable to get localStorage values to display -- CALL THE KEY ONLY
 
+//Function for viewing High Scores at beginning
+function myFunction() {
+  location.replace("newpage.html");
+}
 
 //Hiding and Showing Buttons
 function hideSub() { //Hide "Submit" button
 $("#submit").css('display', 'none');
-//document.getElementById("submit").style.display = "none";
 }
 function hideGoBack() { //Hide "Submit" button
 $("#goback").css('display', 'none');
@@ -204,10 +208,10 @@ function subClick () {
   $("#submit").click(function() { //Function to check if Submit button = clicked
     $(this).data('clicked', true); //If "this", aka button, being clicked, is true
     //WANT TO SAVE INFO ONCE THEY CLICK SUBMIT, SO PUT THESE LOCALSTORAGE SAVES HERE
-    localStorage.setItem('highscore', score); //Prof said I need to declare this as a variable to get localStorage values to display
-    localStorage.setItem('initials', initialwords.value); //Prof said I need to declare this as a variable to get localStorage values to display
-    console.log(initialwords.value);
-    return window.location.assign("newpage.html"); //Take user to new page
+    if (initialwords.value.length > 0) { //Checking to see if initials are greater than 0
+      window.location.assign("newpage.html"); //If initials are greater than 0 -so they input initials- take them to the View High Scores Page
+      localStorage.setItem('highscore', score); //Then save their high score
+      localStorage.setItem('initials', initialwords.value); //Then save their initials -- we trigger the display of score + initials in another f(x)
+    }
   })
 }
-

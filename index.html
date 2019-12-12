@@ -18,12 +18,15 @@
             <h2 class="display-4" id="time"></h2>
            
             <!-- Style for View Highscores below-->
-            <h3 class="display-4" id="hscore"></h3>
+            <h3 class="display-4" id="hscore" onclick="HighScores()"></h3>
             <p class="lead" id="words">Answer the following questions within the time limit. Incorrect answers will penalize your score and time by 15 seconds! Best of luck.</p>
             <span id="hello"></span>
             <span id="messageTxt"></span>
+           
             <input type="text" name ="" id="initials" placeholder="Enter Initials">
+           
             <button type="button" id="submit" class="btn btn-info btn-lg">Submit</button>
+            
             <button type="button" id="goback" class="btn btn-info btn-lg">Go Back</button>
 
         </div>
@@ -42,13 +45,15 @@
     <button type="button" id="four" class="btn btn-danger btn-md"></button>
     </ul>
 
-    <!-- <audio controls autoplay name="media"> <source src="assets/music/thxnext.mp3" type="audio/mp3"></audio> -->
+    <audio controls autoplay name="media"> <source src="assets/music/thxnext.mp3" type="audio/mp3"></audio>
 
     <div id="main"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
     <!--Need questions.js to go AFTER jQuery-->
-    <script src="assets/js/questions.js"></script>
+    <script src="assets/js/questions.js">
+
+    </script>
     
 </body>
 </html>
