@@ -201,10 +201,8 @@ $("#submit").click(function() { //Function to check if Submit button = clicked
     if (initialwords.value.length > 0) { //Checking to see if initials are greater than 0, like if there's any initials
       let arraything = []; //Make empty array to push score/initials into
       const another = [score, initialwords.value]; // Making an array with our data -- don't need stuff2 because we have initialwords.value in this array. We have to save this into an array to call it more easily
-      //This didn't work -- another.sort(function(a, b){return b - a});
       if (stuff) { //This checks if we have stuff saved in localStorage -- have to do AFTER the click so it's not empty
-          stuff.push(another);  //Push our data array into the empty array, pushes new scores and initials into the array
-          stuff.sort(function(b, a) {b.score - a.score});
+      stuff.push(another);  //Push our data array into the empty array, pushes new scores and initials into the array
           arraything = stuff; //Set arraything equal to stuff because it'll be drier code -- we can replace stuff with arraything
       } else {
         arraything.push(another); //Pushing our data array into the empty array -- this runs if stuff is null/false
