@@ -12,3 +12,9 @@ The goals of this assignment are to:
 
 * Allow users to take this quiz across mobile and Desktop platforms, including tablets. 
 
+Quiz Link: https://melanierogoff.github.io/Unit4HW/
+
+Screenshots (Mobile and Desktop Versions, Respectively):
+
+![Mobile View](assets/images/mobile.png)
+![Desktop View](assets/image/desk.png)
