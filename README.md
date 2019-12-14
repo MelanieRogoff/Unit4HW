@@ -17,4 +17,4 @@ Quiz Link: https://melanierogoff.github.io/Unit4HW/
 Screenshots (Mobile and Desktop Versions, Respectively):
 
 ![Mobile View](assets/images/mobile.png)
-![Desktop View](assets/image/desk.png)
+![Desktop View](assets/images/desk.png)
